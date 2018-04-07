@@ -2,8 +2,7 @@ import tensorflow as tf
 import pandas as pd
 import matplotlib.pyplot as plt
 
-def network(x, shape):
-	hidden_units=100
+def network(x, shape, hidden_units=100):
 	h = tf.layers.dense(inputs=x, units=hidden_units, activation=tf.nn.relu)
 	return tf.layers.dense(inputs=h, units=shape, activation=tf.nn.sigmoid)
 
@@ -50,7 +49,7 @@ if __name__ == "__main__":
 		plt.show()
 
 		# Plotting reconstructed images
-		row = 0; label = 0
+		row = 0; label = 0; break_label = 9
 		while True:
 			if y[row] != label:
 				row += 1
@@ -69,5 +68,5 @@ if __name__ == "__main__":
 
 			label += 1
 
-			if label == 10:
+			if label == break_label+1:
 				break
