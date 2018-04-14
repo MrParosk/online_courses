@@ -7,7 +7,7 @@ def generator(x, reuse=False):
     with tf.variable_scope('Generator', reuse=reuse):
         x = tf.layers.dense(x, units=6*6*128, activation=None)
         x = tf.nn.relu(x)
-        x = tf.reshape(x, (-1, 6, 6, 128))
+        x = tf.reshape(x, [-1, 6, 6, 128])
 
         x = tf.layers.conv2d_transpose(x, 128, kernel_size=[4, 4], strides=[2, 2],
                                        kernel_initializer=tf.random_normal_initializer(stddev=0.02),
