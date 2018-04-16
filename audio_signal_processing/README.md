@@ -1,0 +1,1 @@
+# Audio Signal ProcessingScripts/programs for the course "Audio Signal Processing for Music Applications" at Coursera.
