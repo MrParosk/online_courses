@@ -7,75 +7,75 @@ GAMMA = 0.9
 POSSIBLE_ACTIONS = ('U', 'D', 'L', 'R')
 
 if __name__ == "__main__":
-	grid = negative_grid()
+    grid = negative_grid()
 
-	# Initializing policy randomly
-	policy = {}
-	for s in grid.actions.keys():
-		policy[s] = np.random.choice(POSSIBLE_ACTIONS)
+    # Initializing policy randomly
+    policy = {}
+    for s in grid.actions.keys():
+        policy[s] = np.random.choice(POSSIBLE_ACTIONS)
 
-	print("Initial policy")
-	print_policy(policy, grid)
-	print("\n")
+    print("Initial policy")
+    print_policy(policy, grid)
+    print("\n")
 
-	# Initializing V(s)
-	V = {}
-	states = grid.all_states()
-	for s in states:
-		if s in grid.actions:
-			# Random initialization
- 			V[s] = np.random.random()
-		else:
-			# Terminal state
-			V[s] = 0
+    # Initializing V(s)
+    V = {}
+    states = grid.all_states()
+    for s in states:
+        if s in grid.actions:
+            # Random initialization
+            V[s] = np.random.random()
+        else:
+            # Terminal state
+            V[s] = 0
 
-	while True:
-		# Policy evaluation
-		while True:
-			delta = 0
-			for s in states:
-				old_V = V[s]
+    while True:
+        # Policy evaluation
+        while True:
+            delta = 0
+            for s in states:
+                old_V = V[s]
 
-				if s in policy:
-					a = policy[s]
-					grid.set_state(s)
-					r = grid.move(a)
-					V[s] = r + GAMMA*V[grid.current_state()]
-					delta = max(delta, np.abs(old_V - V[s]))
+                if s in policy:
+                    a = policy[s]
+                    grid.set_state(s)
+                    r = grid.move(a)
+                    V[s] = r + GAMMA*V[grid.current_state()]
+                    delta = max(delta, np.abs(old_V - V[s]))
 
-			if delta < THRESHOLD:
-				break
+            if delta < THRESHOLD:
+                break
 
-		# Policy improvment
-		policy_changed = True
+        # Policy improvment
+        policy_changed = True
 
-		for s in states:
-			if s in policy:
-				old_a = policy[s]
-				new_a = None
+        for s in states:
+            if s in policy:
+                old_a = policy[s]
+                new_a = None
 
-				best_value = float('-inf')
+                best_value = float('-inf')
 
-        		# Go through all possible actions to find the best action
-				for a in POSSIBLE_ACTIONS:
-					grid.set_state(s)
-					r = grid.move(a)
-					v = r + GAMMA*V[grid.current_state()]
+                # Go through all possible actions to find the best action
+                for a in POSSIBLE_ACTIONS:
+                    grid.set_state(s)
+                    r = grid.move(a)
+                    v = r + GAMMA*V[grid.current_state()]
 
-					if v > best_value:
-							best_value = v
-							new_a = a
+                    if v > best_value:
+                        best_value = v
+                        new_a = a
 
-				policy[s] = new_a
-				if new_a != old_a:
-					policy_changed = False
+                policy[s] = new_a
+                if new_a != old_a:
+                    policy_changed = False
 
-		if policy_changed:
-			break
+        if policy_changed:
+            break
 
-	print("Final value function")
-	print_value_func(V, grid)
-	print("\n")
-	
-	print("Final policy")
-	print_policy(policy, grid)
+    print("Final value function")
+    print_value_func(V, grid)
+    print("\n")
+
+    print("Final policy")
+    print_policy(policy, grid)

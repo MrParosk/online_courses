@@ -21,7 +21,7 @@ class Grid:
         return (self.row, self.col)
 
     def move(self, action):
-        # check if legal move first
+        # Check if legal move first
         if action in self.actions[(self.row, self.col)]:
             if action == 'U':
                 self.row -= 1
@@ -31,18 +31,19 @@ class Grid:
                 self.col += 1
             elif action == 'L':
                 self.col -= 1
+
         return self.rewards.get((self.row, self.col), 0)
 
     def undo_move(self, action):
-        # opposite to move
+        # Opposite to move
         if action == 'U':
-          self.row += 1
+            self.row += 1
         elif action == 'D':
-          self.row -= 1
+            self.row -= 1
         elif action == 'R':
-          self.col -= 1
+            self.col -= 1
         elif action == 'L':
-          self.col += 1
+            self.col += 1
 
     def is_terminal(self, s):
         return s not in self.actions
@@ -57,12 +58,12 @@ class Grid:
 
 def standard_grid():
     """
-        Define a grid that describes the reward for arriving at each state and possible actions at each state.
-        Here, x means you can't go there, s means start position and the number implies reward at that state.
-        The grid looks like this:
-        .  .  .  1
-        .  x  . -1
-        s  .  .  .
+    Define a grid that describes the reward for arriving at each state and possible actions at each state.
+    Here, x means you can't go there, s means start position and the number implies reward at that state.
+    The grid looks like this:
+    .  .  .  1
+    .  x  . -1
+    s  .  .  .
     """
 
     g = Grid(3, 4, (2, 0))
