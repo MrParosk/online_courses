@@ -22,7 +22,7 @@ class Grid:
 
     def move(self, action):
         # check if legal move first
-        if action in self.actions[(self.row, self.j)]:
+        if action in self.actions[(self.row, self.col)]:
             if action == 'U':
                 self.row -= 1
             elif action == 'D':
@@ -31,7 +31,7 @@ class Grid:
                 self.col += 1
             elif action == 'L':
                 self.col -= 1
-        return self.rewards.get((self.row, self.col), default=0)
+        return self.rewards.get((self.row, self.col), 0)
 
     def undo_move(self, action):
         # opposite to move
