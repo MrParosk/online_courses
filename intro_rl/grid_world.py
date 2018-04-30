@@ -23,26 +23,26 @@ class Grid:
     def move(self, action):
         # Check if legal move first
         if action in self.actions[(self.row, self.col)]:
-            if action == 'U':
+            if action == "U":
                 self.row -= 1
-            elif action == 'D':
+            elif action == "D":
                 self.row += 1
-            elif action == 'R':
+            elif action == "R":
                 self.col += 1
-            elif action == 'L':
+            elif action == "L":
                 self.col -= 1
 
         return self.rewards.get((self.row, self.col), 0)
 
     def undo_move(self, action):
         # Opposite to move
-        if action == 'U':
+        if action == "U":
             self.row += 1
-        elif action == 'D':
+        elif action == "D":
             self.row -= 1
-        elif action == 'R':
+        elif action == "R":
             self.col -= 1
-        elif action == 'L':
+        elif action == "L":
             self.col += 1
 
     def is_terminal(self, s):
@@ -69,15 +69,15 @@ def standard_grid():
     g = Grid(3, 4, (2, 0))
     rewards = {(0, 3): 1, (1, 3): -1}
     actions = {
-        (0, 0): ('D', 'R'),
-        (0, 1): ('L', 'R'),
-        (0, 2): ('L', 'D', 'R'),
-        (1, 0): ('U', 'D'),
-        (1, 2): ('U', 'D', 'R'),
-        (2, 0): ('U', 'R'),
-        (2, 1): ('L', 'R'),
-        (2, 2): ('L', 'R', 'U'),
-        (2, 3): ('L', 'U'),
+        (0, 0): ("D", "R"),
+        (0, 1): ("L", "R"),
+        (0, 2): ("L", "D", "R"),
+        (1, 0): ("U", "D"),
+        (1, 2): ("U", "D", "R"),
+        (2, 0): ("U", "R"),
+        (2, 1): ("L", "R"),
+        (2, 2): ("L", "R", "U"),
+        (2, 3): ("L", "U"),
     }
     g.set(rewards, actions)
     return g
