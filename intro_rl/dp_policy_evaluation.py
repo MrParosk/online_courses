@@ -1,3 +1,5 @@
+# Policy evaluation using dynamic programming
+
 import numpy as np
 from grid_world import standard_grid
 
@@ -19,7 +21,7 @@ def print_policy(policy, grid):
     for i in range(grid.width):
         print("---------------------------")
         for j in range(grid.height):
-            a = policy.get((i,j), ' ')
+            a = policy.get((i,j), " ")
             print("  %s  |" % a, end="")
         print("")
 
@@ -61,15 +63,15 @@ if __name__ == "__main__":
 
     # Fixed policy 
     policy = {
-        (2, 0): 'U',
-        (1, 0): 'U',
-        (0, 0): 'R',
-        (0, 1): 'R',
-        (0, 2): 'R',
-        (1, 2): 'R',
-        (2, 1): 'R',
-        (2, 2): 'R',
-        (2, 3): 'U',
+        (2, 0): "U",
+        (1, 0): "U",
+        (0, 0): "R",
+        (0, 1): "R",
+        (0, 2): "R",
+        (1, 2): "R",
+        (2, 1): "R",
+        (2, 2): "R",
+        (2, 3): "U",
     }
 
     print("Fixed policy")

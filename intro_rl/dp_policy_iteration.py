@@ -1,18 +1,20 @@
+# Policy iteration using dynamic programming
+
 import numpy as np
-from grid_world import standard_grid, negative_grid
-from iterative_policy_evaluation import print_value_func, print_policy
+from grid_world import negative_grid
+from dp_policy_evaluation import print_value_func, print_policy
 
 THRESHOLD = 1e-3
 GAMMA = 0.9
-POSSIBLE_ACTIONS = ('U', 'D', 'L', 'R')
+POSSIBLE_ACTIONS = ("U", "D", "L", "R")
 
 if __name__ == "__main__":
     grid = negative_grid()
 
     # Initializing policy randomly
     policy = {}
-    for s in grid.actions.keys():
-        policy[s] = np.random.choice(POSSIBLE_ACTIONS)
+    for a in grid.actions.keys():
+        policy[a] = np.random.choice(POSSIBLE_ACTIONS)
 
     print("Initial policy")
     print_policy(policy, grid)
@@ -54,7 +56,7 @@ if __name__ == "__main__":
                 old_a = policy[s]
                 new_a = None
 
-                best_value = float('-inf')
+                best_value = float("-inf")
 
                 # Go through all possible actions to find the best action
                 for a in POSSIBLE_ACTIONS:
