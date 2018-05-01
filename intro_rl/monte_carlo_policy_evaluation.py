@@ -74,7 +74,6 @@ if __name__ == "__main__":
 
     for _ in range(0, 100):
         states_returns = play_game(grid, policy)
-        print
         for s, G in states_returns:
             returns[s].append(G)
             V[s] = np.mean(returns[s])
