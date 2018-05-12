@@ -1,1 +1,1 @@
-# Reinforcement LearningScripts/programs for the course "Artificial Intelligence: Reinforcement Learning in Python" at Udemy.
+# Reinforcement LearningScripts/programs for the course "Artificial Intelligence: Reinforcement Learning in Python" at [Udemy](https://www.udemy.com/artificial-intelligence-reinforcement-learning-in-python/).

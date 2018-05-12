@@ -1,2 +1,1 @@
-# online_courses
-collection of scripts/programs for online courses
+# Online coursesCollection of scripts/programs from online courses I have completed.

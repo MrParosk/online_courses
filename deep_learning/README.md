@@ -1,1 +1,1 @@
-# Deep LearningLecture notes from the 5-course specialization "Deep Learning" at Coursera.
+# Deep LearningLecture notes from the 5-course specialization "Deep Learning" at [Coursera](https://www.coursera.org/specializations/deep-learning).
