@@ -1,1 +1,1 @@
-# Reinforcement LearningMaterial for the course "Intro to Parallel Programming" at [Udacity](https://eu.udacity.com/course/intro-to-parallel-programming--cs344).
+# Parallel ProgrammingMaterial for the course "Intro to Parallel Programming" at [Udacity](https://eu.udacity.com/course/intro-to-parallel-programming--cs344).
