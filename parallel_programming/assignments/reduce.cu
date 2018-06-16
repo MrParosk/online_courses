@@ -1,12 +1,12 @@
 /* 
-Implementing parallell reduce in CUDA.
+Implementing parallell plus reduce in CUDA.
 */
 
 #include <stdio.h>
 #define NUM_THREADS 16
 #define NUM_BLOCKS 8
 
-unsigned int serial_reduce(unsigned int *array, unsigned int size){
+unsigned int serial_reduce(unsigned int* array, const unsigned int size){
     unsigned int sum = 0;
 
     for(int i = 0; i < size; i++){
@@ -16,11 +16,11 @@ unsigned int serial_reduce(unsigned int *array, unsigned int size){
     return sum;
 }
 
-__global__ void reduce(unsigned int *d_in, unsigned int *d_out){
+__global__ void reduce(unsigned int* d_in, unsigned int* d_out){
     
     unsigned int local_idx = threadIdx.x;
     unsigned int global_idx = threadIdx.x + blockIdx.x * blockDim.x;
-    unsigned const int num_threads = blockDim.x;
+    const unsigned int num_threads = blockDim.x;
 
     extern __shared__ unsigned int shared_array[];
     shared_array[local_idx] = d_in[global_idx];
@@ -48,8 +48,8 @@ int main(){
 
     unsigned int h_out [NUM_BLOCKS];
 
-    unsigned int *d_in;
-    unsigned int *d_out;
+    unsigned int* d_in;
+    unsigned int* d_out;
 
     cudaMalloc((void **) &d_in, IN_BYTES);
     cudaMalloc((void **) &d_out, OUT_BYTES);

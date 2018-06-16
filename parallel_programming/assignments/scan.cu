@@ -18,7 +18,7 @@ void serial_scan(unsigned int* in_array, unsigned int* out_array, const unsigned
 
 __global__ void scan(unsigned int* d_in){
     unsigned int idx = threadIdx.x;
-    unsigned const int num_threads = blockDim.x;
+    const unsigned int num_threads = blockDim.x;
 
     for(unsigned int i = 1; i < num_threads; i *= 2){
             if(idx >= i){
