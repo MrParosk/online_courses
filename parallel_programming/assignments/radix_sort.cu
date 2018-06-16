@@ -62,7 +62,7 @@ __device__ void partition_by_bit(unsigned int* values, unsigned int bit){
 int main(){
     const unsigned int BYTES = NUM_ELEMENTS*sizeof(int);
     
-    unsigned int h_in[NUM_ELEMENTS];
+    unsigned int h_in [NUM_ELEMENTS];
     unsigned int h_out [NUM_ELEMENTS];
 
     for(int i = 0; i < NUM_ELEMENTS; i++){
@@ -86,6 +86,8 @@ int main(){
     for(int i = 0; i < NUM_ELEMENTS; i++){
         printf("%d ", h_out[i]);
     }
+
+    cudaFree(d_array);
 
     return 0;
 }

@@ -62,5 +62,8 @@ int main(){
         printf("%d ", h_out[i]);
     }
 
+    cudaFree(d_in);
+    cudaFree(d_out);
+
     return 0;
 }

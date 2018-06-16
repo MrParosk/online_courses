@@ -12,7 +12,6 @@ unsigned int serial_reduce(unsigned int* array, const unsigned int size){
     for(int i = 0; i < size; i++){
         sum += array[i];
     }
-
     return sum;
 }
 
@@ -22,7 +21,7 @@ __global__ void reduce(unsigned int* d_in, unsigned int* d_out){
     unsigned int global_idx = threadIdx.x + blockIdx.x * blockDim.x;
     const unsigned int num_threads = blockDim.x;
 
-    extern __shared__ unsigned int shared_array[];
+    extern __shared__ unsigned int shared_array [];
     shared_array[local_idx] = d_in[global_idx];
     __syncthreads();
 
@@ -62,6 +61,9 @@ int main(){
 
     // Doing a final serial reduce since output is of size NUM_BLOCKS
     printf("Output: %d", serial_reduce(h_out, NUM_BLOCKS)); 
+    
+    cudaFree(d_in);
+    cudaFree(d_out);
 
     return 0;
 }
