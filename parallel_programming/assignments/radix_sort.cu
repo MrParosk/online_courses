@@ -6,16 +6,16 @@ Implementing Radix sort in CUDA.
 #include <stdlib.h>
 #define NUM_ELEMENTS 16
 
-__device__ void partition_by_bit(unsigned int *values, unsigned int bit);
+__device__ void partition_by_bit(unsigned int* values, unsigned int bit);
 
-__global__ void radix_sort(unsigned int *d_array){
+__global__ void radix_sort(unsigned int* d_array){
     for(int bit = 0; bit < 32; bit++){
         partition_by_bit(d_array, bit);
         __syncthreads();
     }
 }
 
-__device__ unsigned int plus_scan(unsigned int *bit_array){
+__device__ unsigned int plus_scan(unsigned int* bit_array){
     unsigned int idx = threadIdx.x;
     unsigned int size = blockDim.x;
 
@@ -37,7 +37,7 @@ __device__ unsigned int plus_scan(unsigned int *bit_array){
     return bit_array[idx];
 }
 
-__device__ void partition_by_bit(unsigned int *values, unsigned int bit){
+__device__ void partition_by_bit(unsigned int* values, unsigned int bit){
     unsigned int idx = threadIdx.x;
     unsigned int size = blockDim.x;
     unsigned int x_i = values[idx];
@@ -69,7 +69,7 @@ int main(){
         h_in[i] = rand() % 100; // Generating random numbers between 0 and 99
     }
 
-    unsigned int *d_array;
+    unsigned int* d_array;
     cudaMalloc((void **) &d_array, BYTES);
 
     cudaMemcpy(d_array, h_in, BYTES, cudaMemcpyHostToDevice);
