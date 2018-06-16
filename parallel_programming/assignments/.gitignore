@@ -1,3 +1,7 @@
 radix_sort.lib
 radix_sort.exp
 radix_sort.exe
+
+reduce.exe
+reduce.exp
+reduce.lib
