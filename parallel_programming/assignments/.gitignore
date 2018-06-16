@@ -5,3 +5,7 @@ radix_sort.exe
 reduce.exe
 reduce.exp
 reduce.lib
+
+scan.exe
+scan.exp
+scan.lib
