@@ -1,0 +1,1 @@
+# Linear regression with gradient descentImplementing linear regression with gradient descent in CUDA.
