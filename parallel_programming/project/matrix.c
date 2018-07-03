@@ -4,7 +4,7 @@
 #include "matrix.h"
 #include "utils.h"
 
-matrix* create_matrix(unsigned int rows, unsigned int cols){
+matrix* create_matrix(const unsigned int rows, const unsigned int cols){
     matrix* A = (matrix*) malloc(sizeof(matrix));
     A->rows = rows;
     A->cols = cols;
@@ -26,8 +26,7 @@ void free_matrix(matrix* matrix_ptr){
 }
 
 void equal_matrix(matrix* lhs, matrix* rhs){
-    // lhs = rhs, i.e. lhs is changed
-    //Assert that the sizes are equal
+    // lhs = rhs
 
     for(unsigned int i = 0; i < lhs->rows * lhs->cols; i++){
         lhs->values[i] = rhs->values[i];
@@ -49,9 +48,7 @@ void fill_matrix_random(matrix* matrix_pointer){
     }
 }
 
-void fill_matrix_values(matrix* matrix_pointer, float* array){
-    // Check so that the sizes are equal
-
+void fill_matrix_values(matrix* matrix_pointer, const float* array){
     for(unsigned int i = 0; i < matrix_pointer->rows * matrix_pointer->cols; i++){
         matrix_pointer->values[i] = array[i];
     }

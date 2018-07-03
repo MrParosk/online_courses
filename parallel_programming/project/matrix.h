@@ -7,7 +7,7 @@ typedef struct{
     unsigned int cols;
 } matrix;
 
-matrix* create_matrix(unsigned int rows, unsigned int cols);
+matrix* create_matrix(const unsigned int rows, const unsigned int cols);
 
 void free_matrix(matrix* matrix_ptr);
 
@@ -17,7 +17,7 @@ void print_matrix(matrix* matrix_pointer);
 
 void fill_matrix_random(matrix* matrix_pointer);
 
-void fill_matrix_values(matrix* matrix_pointer, float* array);
+void fill_matrix_values(matrix* matrix_pointer, const float* array);
 
 void transpose_matrix(matrix* matrix_pointer);
 
