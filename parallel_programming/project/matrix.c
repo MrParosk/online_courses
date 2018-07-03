@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "matrix.h"
+#include "utils.h"
 
 matrix* create_matrix(unsigned int rows, unsigned int cols){
     matrix* A = (matrix*) malloc(sizeof(matrix));
@@ -9,7 +10,28 @@ matrix* create_matrix(unsigned int rows, unsigned int cols){
     A->cols = cols;
 
     A->values = (float*) malloc((rows * cols) * sizeof(float));
+
+    for(unsigned int i = 0; i < rows * cols; i++){
+        A->values[i] = 0.0f;
+    }
+
     return A;
+}
+
+void free_matrix(matrix* matrix_ptr){
+    matrix_ptr->rows = 0;
+    matrix_ptr->cols = 0;
+    free(matrix_ptr->values);
+    free(matrix_ptr);
+}
+
+void equal_matrix(matrix* lhs, matrix* rhs){
+    // lhs = rhs, i.e. lhs is changed
+    //Assert that the sizes are equal
+
+    for(unsigned int i = 0; i < lhs->rows * lhs->cols; i++){
+        lhs->values[i] = rhs->values[i];
+    }
 }
 
 void print_matrix(matrix* matrix_pointer){
@@ -22,16 +44,15 @@ void print_matrix(matrix* matrix_pointer){
 }
 
 void fill_matrix_random(matrix* matrix_pointer){
-    for(unsigned int i=0; i < matrix_pointer->rows * matrix_pointer->cols; i++){
-        // Fix with unit normal
-        matrix_pointer->values[i] = 0.0f;
+    for(unsigned int i = 0; i < matrix_pointer->rows * matrix_pointer->cols; i++){
+        matrix_pointer->values[i] = uniform();
     }
 }
 
 void fill_matrix_values(matrix* matrix_pointer, float* array){
     // Check so that the sizes are equal
 
-    for(unsigned int i=0; i < matrix_pointer->rows * matrix_pointer->cols; i++){
+    for(unsigned int i = 0; i < matrix_pointer->rows * matrix_pointer->cols; i++){
         matrix_pointer->values[i] = array[i];
     }
 }

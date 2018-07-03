@@ -1,3 +1,6 @@
 main.o
 matrix.o
+utils.o
 output.exe
+X.txt
+y.txt

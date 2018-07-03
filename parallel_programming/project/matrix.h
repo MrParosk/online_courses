@@ -9,6 +9,10 @@ typedef struct{
 
 matrix* create_matrix(unsigned int rows, unsigned int cols);
 
+void free_matrix(matrix* matrix_ptr);
+
+void equal_matrix(matrix* lhs, matrix* rhs);
+
 void print_matrix(matrix* matrix_pointer);
 
 void fill_matrix_random(matrix* matrix_pointer);
