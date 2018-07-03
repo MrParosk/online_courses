@@ -1,14 +1,17 @@
-output: main.o matrix.o utils.o
-	gcc main.o matrix.o utils.o -o output
+output: main.o matrix.o utils.o cpu_gradient_descent.o
+	gcc main.o matrix.o utils.o cpu_gradient_descent.o -o output
 
 main.o: main.c
 	gcc -c main.c
 
-matrix.o: matrix.c matrix.h
-	gcc -c matrix.c
+matrix.o: src/matrix.c src/matrix.h
+	gcc -c src/matrix.c
 
-utils.o: utils.c utils.h
-	gcc -c utils.c
+cpu_gradient_descent.o: src/cpu_gradient_descent.c src/cpu_gradient_descent.h
+	gcc -c src/cpu_gradient_descent.c
+
+utils.o: src/utils.c src/utils.h
+	gcc -c src/utils.c
 
 clean:
 	rm *.o output
