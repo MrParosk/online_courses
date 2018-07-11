@@ -1,11 +1,28 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+#include <sys/stat.h>
 #include "utils.h"
 #include "matrix.h"
 #define MAX 10000000
 
-float* load_data(char* file_name, const unsigned int num_samples, const unsigned num_features){
+int file_exists(const char* file_name){
+    struct stat buffer;
+    int exist = stat(file_name, &buffer);
+    
+    if(exist == 0){
+        return 0;
+    }else{
+        return 1;
+    }   
+}
+
+float* load_data(const char* file_name, const unsigned int num_samples, const unsigned num_features){
+    if(file_exists(file_name)){
+        printf("File %s not found! Exiting...", file_name);
+        exit(EXIT_FAILURE);
+    }
+
     FILE* file_ptr;
     float value;
     float* array = (float*) malloc((num_samples * num_features) * sizeof(float));

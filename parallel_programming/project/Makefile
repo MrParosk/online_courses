@@ -1,4 +1,4 @@
-output: main.o matrix.o utils.o cpu_gradient_descent.o
+output: main.o matrix.o utils.o cpu_gradient_descent.o 
 	gcc main.o matrix.o utils.o cpu_gradient_descent.o -o output
 
 main.o: main.c
@@ -14,4 +14,4 @@ utils.o: src/utils.c src/utils.h
 	gcc -c src/utils.c
 
 clean:
-	rm *.o output
+	rm *.o
