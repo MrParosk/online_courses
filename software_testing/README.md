@@ -1,0 +1,1 @@
+# Software TestingMaterial for the course "Software Testing" at [Udacity](https://eu.udacity.com/course/software-testing--cs258).
