@@ -1,5 +1,0 @@
-main.o
-matrix.o
-cpu_gradient_descent.o
-utils.o
-output.exe
