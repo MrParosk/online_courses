@@ -48,3 +48,95 @@ REST applies a few additional specifications on top of HTTP.
 4. Uniform interface
 5. Layered system
 6. Code on demand
+
+## Lesson 2
+
+### Structure of an HTTP request
+
+- Header
+  - Request line
+    - HTTP verb
+    - URI
+    - HTTP/version
+  - Optional request headers
+    - name:value, name:value
+- Blank line
+- Body (optional)
+  - Additional information
+
+#### Example HTTP request
+
+```text
+GET puppies.html HTTP/1.1
+Host: www.puppyshelter.com
+Accept: image/gif, image/jpeg, */*
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0
+Content-Length: 35
+
+puppyId=12345&name=Fido+Simpson
+```
+
+### Structure of an HTTP response
+
+- Header
+  - Status line
+    - HTTP/version
+    - Status code
+    - Reason phrase
+  - Optional response headers
+- Blank line
+- Body (optional)
+
+#### Example HTTP response
+
+```text
+HTTP/1.1 OK
+Date: Fri, 04 Sep 2015 01:11:12 GMT
+Server: Apache/1.3.29 (Win32)
+Last-Modified: Sat, 07 Feb 2014
+ETag: "0-23-4024c3a5:
+ContentType: text/html
+ContentLength: 35
+Connection: KeepAlive
+KeepAlive: timeout=15, max = 100
+
+<h1>Welcome!</h1>
+```
+
+### cURL
+
+Curl is a popular command line tool for sending and receiving HTTP. At its very basic, cURL makes requests to URL's. Normally you want to interact with those URL's in someway. By default, cURL makes an HTTP GET request.
+
+Some useful curl commands:
+
+- -i Includes the header
+  - `curl -i https://jsonplaceholder.typicode.com/posts`
+- --header Returns only the header
+  - `curl --header https://jsonplaceholder.typicode.com/posts`
+- -o Saves the output to a given file
+  - `curl -o example.txt https://jsonplaceholder.typicode.com/posts`
+- -O Download the file (directly)
+  - `curl -O https://jsonplaceholder.typicode.com/posts`
+- -X Specifies a custom request method instead of GET (e.g. PUT, DELETE etc)
+  - `curl -X DELETE https://jsonplaceholder.typicode.com/posts/1`
+- -d Sends the specified data in a POST request
+  - `curl -d test.txt https://jsonplaceholder.typicode.com/posts`
+- -u allows for authentication
+  - `curl -u username:password https://jsonplaceholder.typicode.com/posts`
+
+The official cURL documentation can be found [here](http://curl.haxx.se/docs/manpage.html).
+
+### HTTP request methods
+
+- GET
+  - GET requests a representation of the specified resource. Requests using GET should only retrieve data.
+- POST
+  - The POST method is used to submit an entity to the specified resource, often causing a change in state or side effects on the server.
+- PUT
+  - The PUT method replaces all current representations of the target resource with the request payload.
+- DELETE
+  - The DELETE method deletes the specified resource.
+- PATCH
+  - The PATCH method is used to apply partial modifications to a resource.
