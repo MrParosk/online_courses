@@ -1,10 +1,10 @@
 from flask import request, abort, jsonify, Blueprint
-from ml_backend.database.models import DataPoint
+from ml_backend.dataset.models import DataPoint
 from ml_backend import db
 
 database = Blueprint("database", __name__)
 
-@database.route("/add_data", methods=["POST"])
+@database.route("/data", methods=["POST"])
 def add_data():
     json_data = request.json
 
