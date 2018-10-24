@@ -105,6 +105,11 @@ KeepAlive: timeout=15, max = 100
 <h1>Welcome!</h1>
 ```
 
+### URL versus URI
+
+- URIs are identifiers, and that can mean name, location, or both.
+- The part that makes something a URL is the combination of the name and an access method, such as https://.
+
 ### cURL
 
 Curl is a popular command line tool for sending and receiving HTTP. At its very basic, cURL makes requests to URL's. Normally you want to interact with those URL's in someway. By default, cURL makes an HTTP GET request.
@@ -140,3 +145,41 @@ The official cURL documentation can be found [here](http://curl.haxx.se/docs/man
   - The DELETE method deletes the specified resource.
 - PATCH
   - The PATCH method is used to apply partial modifications to a resource.
+
+## Lesson 4
+
+### Storing user password
+
+Hashing is a one-way function which allows us to store user password in our database without jeopardizing the user's security if the database were hacked. It is recommended to login over HTTPS (secure HTTP).
+
+### Token Based Authentication
+
+A token is a string that the server generates. The token can be passed along with the HTTP request, like cookies, but tokens don't depend on a browser. This allows the user to authenticate itself without using their username and password, making it safer. Tokens are useful since they typically have an expiration time, making it less troublesome if the token were leaked since it will expire.
+
+It's typical to use a cryptographically signed tokens, making it harder to tamper with the token. One library that does this in Python is `itsdangerous`.
+
+### OAuth 2.0
+
+OAuth allows an application to access data or services that the user has with another service, and this is done in a way that prevents the application from knowing the login credentials that the user has with the service.
+
+For example, consider a website or application that asks you for permission to access your Facebook account and post something to your timeline. In this example you are the resource holder (you own your Facebook timeline), the third party application is the consumer and Facebook is the provider. Even if you grant access and the consumer application writes to your timeline, it never sees your Facebook login information.
+
+## Lesson 5
+
+### Developer Friendly Documentation
+
+> Documentation should be easy to navigate and aesthetically pleasing.
+
+### Using Proper URIs
+
+- URIs should always refer to resources, not actions being performed on those resources.
+- Use plural for each resource name.
+
+### Versioning Your API
+
+API version can be specified in the URI. For example:
+
+```text
+GET /api/v1/puppies
+GET /api/v2/puppies
+```
