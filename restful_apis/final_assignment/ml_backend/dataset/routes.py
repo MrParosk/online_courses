@@ -1,10 +1,30 @@
 from flask import request, abort, jsonify, Blueprint
 from ml_backend.dataset.models import DataPoint
-from ml_backend import db
+from ml_backend import db, auth
 
 database = Blueprint("database", __name__)
 
+
+@database.route("/data/<int:id>", methods=["GET"])
+@auth.login_required
+def get_data(id):
+    point = DataPoint.query.filter_by(id=id).first()
+
+    if point is not None:
+        return_dict = {
+            "class_label": point.class_label,
+            "sepal_length": point.sepal_length,
+            "sepal_width": point.sepal_width,
+            "pental_length": point.pental_length,
+            "pental_width": point.pental_width
+        }
+        return jsonify(return_dict), 200
+    else:
+        return "The id did not exist!", 400
+
+
 @database.route("/data", methods=["POST"])
+@auth.login_required
 def add_data():
     json_data = request.json
 
@@ -23,23 +43,7 @@ def add_data():
 
         db.session.add(dp)
         db.session.commit()
-        return "Data sucessfully added!"
+        return "Data sucessfully added!", 200
 
     else:
-        return abort(400)
-
-
-def query_data():
-    points = DataPoint.query.all()
-
-    points_list = []
-    for point in points:
-        d = {"class_label": point.class_label,
-             "sepal_length": point.sepal_length,
-             "sepal_width": point.sepal_width,
-             "pental_length": point.pental_length,
-             "pental_width": point.pental_width
-        }
-        points_list.append(d)
-
-    return points_list
+        return "Data had missing values!", 400

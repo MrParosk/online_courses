@@ -1,14 +1,17 @@
 from flask import Blueprint, request, abort
 import numpy as np
-from sklearn.tree import DecisionTreeClassifier
 import pickle
-from ml_backend.dataset.routes import query_data
-import numpy as np
+from ml_backend.dataset.utils import query_data
+from ml_backend import auth
+from ml_backend.ml_serving.utils import Model
+from ml_backend.config import Config
 
 ml_serving = Blueprint("ml_serving", __name__)
-model_filename = "ml_backend/static/model.pickle"
+model_path = f"ml_backend/static/{Config().model_name}"
+
 
 @ml_serving.route("/train", methods=["GET"])
+@auth.login_required
 def train_model():
     data = query_data()
 
@@ -18,15 +21,15 @@ def train_model():
     y = [[d["class_label"]] for d in data]
     y = np.array(y)
 
-    clf = DecisionTreeClassifier(random_state=42)
-    clf.fit(X, y)
-    score = clf.score(X, y)
+    model = Model()
+    score = model.train(X, y)
+    pickle.dump(model, open(model_path, 'wb'))
 
-    pickle.dump(clf, open(model_filename, 'wb'))
-    return str(score)
+    return f"Training accuracy: {str(score)}", 200
 
 
 @ml_serving.route("/prediction", methods=["POST"])
+@auth.login_required
 def predict():
     json_data = request.json
 
@@ -39,11 +42,9 @@ def predict():
         X = [sepal_length, sepal_width, pental_length, pental_width]
         X = np.array(X).reshape(1,4)
 
-        with open(model_filename, "rb") as file:
-            clf = pickle.load(file)
+        model = pickle.load(open(model_path, "rb"))
+        y_pred = model.predict(X)
 
-        y_pred = clf.predict(X)
-
-        return str(y_pred)
+        return f"Predicted class label: {str(y_pred)}", 200
     else:
-        return abort(400)
+        return "Data had missing values!", 400

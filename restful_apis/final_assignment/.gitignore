@@ -4,3 +4,5 @@ ml_backend/test.db
 ml_backend/dataset/__pycache__
 ml_backend/ml_serving/__pycache__
 ml_backend/users/__pycache__
+
+test_api.py

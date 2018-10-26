@@ -21,14 +21,13 @@ class User(db.Model):
 
     @staticmethod
     def verify_auth_token(token):
-        print(current_app.config["SECRET_KEY"])
         s = Serializer(current_app.config["SECRET_KEY"])
         try:
             data = s.loads(token)
         except SignatureExpired:
-            return None # Valid token, but expired
+            return None  # Valid token, but expired
         except BadSignature:
-            return None # Invalid token
+            return None  # Invalid token
         user = User.query.get(data["id"])
         return user
         

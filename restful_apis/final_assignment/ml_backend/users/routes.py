@@ -5,7 +5,8 @@ from ml_backend import auth
 
 users = Blueprint("users", __name__)
 
-@users.route("/register_user", methods=["POST"])
+
+@users.route("/user", methods=["POST"])
 def register_user():
     json_data = request.json
 
@@ -19,16 +20,16 @@ def register_user():
         user.hash_password(password)
         db.session.add(user)
         db.session.commit()
-        return f"Created user with username={username}"
+        return f"Created user with username={username}", 200
     else:
-        return abort(400)
+        return "Either did not provide username and password or the user already exists!"
 
 
 @users.route("/token", methods=["GET"])
 @auth.login_required
 def get_auth_token():
     token = g.user.generate_auth_token()
-    return jsonify({"token": token.decode("ascii")})
+    return jsonify({"token": token.decode("ascii")}), 200
 
 
 @auth.verify_password
