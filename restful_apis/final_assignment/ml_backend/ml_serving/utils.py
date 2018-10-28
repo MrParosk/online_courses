@@ -1,6 +1,7 @@
 from sklearn.tree import DecisionTreeClassifier
 import numpy as np
 
+
 class Model:
     def __init__(self, random_state=42):
         self.clf = DecisionTreeClassifier(random_state=random_state)
@@ -13,7 +14,7 @@ class Model:
         X = (X - self.mean) / (self.std + self.eps)
         self.clf.fit(X, y)
         return self.clf.score(X, y)
-    
+
     def predict(self, X):
         X = (X - self.mean) / (self.std + self.eps)
         y_pred = self.clf.predict(X)[0]

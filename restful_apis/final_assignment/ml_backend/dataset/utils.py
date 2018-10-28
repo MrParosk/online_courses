@@ -11,7 +11,7 @@ def query_data():
              "sepal_width": point.sepal_width,
              "pental_length": point.pental_length,
              "pental_width": point.pental_width
-        }
+             }
         points_list.append(d)
 
     return points_list

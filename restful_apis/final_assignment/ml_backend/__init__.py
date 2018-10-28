@@ -8,13 +8,14 @@ db = SQLAlchemy()
 bcrypt = Bcrypt()
 auth = HTTPBasicAuth()
 
+
 def create_app():
     from ml_backend.dataset.models import DataPoint
     from ml_backend.users.models import User
     from ml_backend.utils import create_db_file
 
     app = Flask(__name__)
-    
+
     app.config.from_object(Config)
     db.init_app(app)
     bcrypt.init_app(app)

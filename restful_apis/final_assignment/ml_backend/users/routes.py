@@ -37,10 +37,10 @@ def verify_password(token_or_username, password):
     user = User.verify_auth_token(token_or_username)
 
     if not user:
-         user = User.query.filter_by(username=token_or_username).first()
+        user = User.query.filter_by(username=token_or_username).first()
 
-         if not user or not user.verify_password(password):
-             return False
-    
+        if not user or not user.verify_password(password):
+            return False
+
     g.user = user
     return True

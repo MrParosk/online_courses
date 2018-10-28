@@ -33,13 +33,13 @@ def add_data():
     sepal_width = json_data.get("sepal_width")
     pental_length = json_data.get("pental_length")
     pental_width = json_data.get("pental_width")
-    
+
     if None not in (sepal_length, sepal_width, pental_length, pental_width, class_label):
         dp = DataPoint(class_label=class_label,
-                        sepal_length=sepal_length,
-                        sepal_width=sepal_width,
-                        pental_length=pental_length,
-                        pental_width=pental_width)
+                       sepal_length=sepal_length,
+                       sepal_width=sepal_width,
+                       pental_length=pental_length,
+                       pental_width=pental_width)
 
         db.session.add(dp)
         db.session.commit()

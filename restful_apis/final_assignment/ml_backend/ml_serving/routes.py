@@ -40,7 +40,7 @@ def predict():
 
     if None not in (sepal_length, sepal_width, pental_length, pental_width):
         X = [sepal_length, sepal_width, pental_length, pental_width]
-        X = np.array(X).reshape(1,4)
+        X = np.array(X).reshape(1, 4)
 
         model = pickle.load(open(model_path, "rb"))
         y_pred = model.predict(X)

@@ -1,5 +1,6 @@
 from ml_backend import db
 
+
 class DataPoint(db.Model):
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     class_label = db.Column(db.Integer, nullable=False)
