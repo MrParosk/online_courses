@@ -1,0 +1,1 @@
+# Practical Deep Learning for Coders (2018)Notes from the fast.ai course "Practical Deep Learning for Coders" (2018).
