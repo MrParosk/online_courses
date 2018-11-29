@@ -1,4 +1,4 @@
-# Notes from the course “Deep Learning for Coders” (2018)
+# Notes from the course "Deep Learning for Coders" part 1 & 2 (2018)
 
 ## Lesson 2
 
@@ -104,3 +104,9 @@ Batch norm (BN) is applied per channel in convolutional networks. With batch nor
 For state-of-art convolutional models, one usually use 5x5 or 7x7 kernel size for the first layers with a large increase in the number of channels, to give a “richer” starting point for the network. The kernel size of the other layers are usually 3x3.
 
 The resnet model is inspired by boosting, i.e. fitting the residual. One resnet block usually have two convolutional layers.
+
+## Lesson 8 & 9
+
+For most convolutional neural networks, cropping usually works better than squishing (i.e. resizing). However, squishing usually works well.
+
+When doing data augmentation for object detection, we need to augment the ground-truth boxes aswell.
