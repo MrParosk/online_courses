@@ -25,3 +25,21 @@ Random forest bootstraps data per tree, and feature subsets per split.
 Choosing random feature subsets for split consideration can help with interactions between features (i.e. a feature can be sub-optimial locally, but good "globally"). Good values of the feature subset parameter is sqrt(num_features), log2(num_features) and 0.5 * num_features.
 
 Encoding nominal categorical features is usually okay in random forest, since multiple splits can be made on one feature. However, it's a bad practice for most models, e.g. linear regression.
+
+## Lesson 3
+
+In random forest, we usually take the mean of each tree's output to get a prediction. However, we could also calculate the standard deviation of the outputs. This would be a measure of uncertainty of the prediction.
+
+Data leakage means that we have access to data/information during training that we would not have in the "real" situation.
+
+## Lesson 4
+
+In random forest, it is not paramount to transform categorical features to one-hot encoding, compared other models, e.g. linear regression. However, the transformation is usually beneficial. Usually, one only wants to transform categorical features to one-hot encoding if the cardinality is less than, say 7.
+
+Partial dependency plots is a technique for visualizing the dependency between the target and a feature for a model, even with dependency injection from other features. The plots are constructed by the following steps:
+
+- Train the model.
+- Choose a feature.
+- Set the feature's value to a constant and predict the target value.
+- Repeat the above step for some constant values.
+- Plot the constant values and the predicted values.
