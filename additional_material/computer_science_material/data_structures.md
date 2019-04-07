@@ -118,19 +118,6 @@ The picture below shows an example of an (unordered) tree:
 
 <img src="./images/tree.png" width="400"/>
 
-## Heaps
-
-A heap is a tree-based data structure that satisfies the heap property: if P is a parent node of C, then the key of P is either
-
-- Greater than or equal to (in a max heap) or,
-- Less than or equal to (in a min heap) the key of C.
-
-Search has a complexity of  O(log n) and inserting a complexity of O(log n).
-
-Below is an example of a complete binary max-heap:
-
-<img src="./images/heap.png" width="400"/>
-
 ## Binary search tree
 
 A binary search tree has internal nodes, each store a key (and optionally, an associated value) and each have two sub-trees, commonly denoted left and right. The tree additionally satisfies the binary search property, which states that the key in each node must be greater than or equal to any key stored in the left sub-tree, and less than or equal to any key stored in the right sub-tree. The leaves (final nodes) of the tree contain no key and have no structure to distinguish them from one another.
@@ -143,6 +130,19 @@ Below is an example of a binary search tree:
 The picture below shows an example of an binary search tree:
 
 <img src="./images/binary_search_tree.png" width="400"/>
+
+## Heaps
+
+A heap is a tree-based data structure that satisfies the heap property: if P is a parent node of C, then the key of P is either
+
+- Greater than or equal to (in a max heap) or,
+- Less than or equal to (in a min heap) the key of C.
+
+Search has a complexity of  O(n) and inserting a complexity of O(log n).
+
+Below is an example of a complete binary max-heap:
+
+<img src="./images/heap.png" width="400"/>
 
 ## Graphs
 

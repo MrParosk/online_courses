@@ -165,7 +165,7 @@ It has a worst-case time complexity of O(|V| + |E|) and worst-case space complex
 #### DFS
 
 - Tend to be a recursive algorithm.
-- Tend to be easier to implement than bfs since it's recursive.
+- Tend to be easier to implement than BFS since it's recursive.
 
 #### BFS
 
@@ -182,7 +182,7 @@ Recursive algorithms is a method of simplification that divides the problem into
 - **Recursive case** a conditional statement that is used to trigger the recursion.
 - **Base case** a conditional statement that is used to break the recursion.
 
-When running a recursive algorithm, one might encounter "stack level too deep" or "stack overflow". This means that the base case was never reached since it was faulty or the problem was "too large" for the computer. Knowing whether or not you will reach a base case is paramount to correctly use recursion.
+Knowing whether or not you will reach a base case is paramount to correctly use recursion.
 
 Example implementation of n! using recursion:
 
