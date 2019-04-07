@@ -4,8 +4,8 @@ Collection of computer science material. The following topics are covered:
 
 - Data structures
 - Algorithms
-- Parallel programming (TBC)
-- Software design
+- Coding questions tricks
+- Concurrency
 
 Furthermore, the following topics are discussed:
 
