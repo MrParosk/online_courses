@@ -11,4 +11,5 @@ Collection of materials (i.e. code/notes etc) from online courses I have complet
 - [Practical Deep Learning For Coders](https://course.fast.ai/) (No certificate given)
 - [Software Testing](https://eu.udacity.com/course/software-testing--cs258) (No certificate given)
 - [Designing RESTful APIs](https://eu.udacity.com/course/designing-restful-apis--ud388) (No certificate given)
-- [Audio Signal Processing for Music Applications](https://www.coursera.org/learn/audio-signal-processing) (TBC)
+- [Audio Signal Processing for Music Applications](https://www.coursera.org/learn/audio-signal-processing) (No certificate given)
+- [Computational Linear Algebra](https://www.fast.ai/2017/07/17/num-lin-alg/) (TBC)
