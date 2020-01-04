@@ -34,3 +34,11 @@
 - Replica-set yaml-files is a combination of pod & replica yaml-file, think of it as extra-configuration to Kubernetes.
 
 <img src="./images/replica_set.png" width="500"/>
+
+## Deployments
+- One can think about the deployment entity as a sophisticated replica-set. It gives automatic updated with zero-downtime, roll-back etc.
+- Deployment creates replica-sets; think of a deployment as an entity that manages replica-sets.
+- If we roll-out a new replica-set, the old replica-set will still be online, but with no replicas (i.e. pods). This allow us to roll back to a previous replica-set if our new version causes problems.
+- In most cases it's better to use deployments instead of replica-sets, since the API is very similar but deployments has more functionality.
+
+<img src="./images/deployment.png" width="500"/>
