@@ -13,3 +13,4 @@ Collection of materials (i.e. code/notes etc) from online courses I have complet
 - [Designing RESTful APIs](https://eu.udacity.com/course/designing-restful-apis--ud388) (No certificate given)
 - [Audio Signal Processing for Music Applications](https://www.coursera.org/learn/audio-signal-processing) (No certificate given)
 - [Computational Linear Algebra](https://www.fast.ai/2017/07/17/num-lin-alg/) (TBC)
+- [Kubernetes Hands-On - Deploy Microservices to the AWS Cloud](https://www.udemy.com/course/kubernetes-microservices/) (TBC)
