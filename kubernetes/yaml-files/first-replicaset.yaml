@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: webapp-replicaset
+spec:
+  # Decide which pods this replica-set should be managing.
+  # Similar in structure to the selector in first-service.yaml.
+  selector:
+    matchLabels:
+      app: webapp
+      release: "0-5"
+  replicas: 2
+  # Template for the pods.
+  # The template section is very similar to the first-pod.yaml.
+  template:
+    metadata:
+      labels:
+        app: webapp
+        release: "0-5"
+    spec:
+      containers:
+        - name: webapp
+          image: richardchesterwood/k8s-fleetman-webapp-angular:release0-5

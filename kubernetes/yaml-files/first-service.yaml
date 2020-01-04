@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fleetman-webapp
+spec:
+  # This defines which pods are going to be represented by this service.
+  # The service becomes a network endpoint for either other services
+  # or mabye external users to connect to (i.e. browers).
+  selector: 
+    app: webapp
+    release: "0-5"
+  ports:
+    - name: http
+      port: 80
+      nodePort: 30080
+  # There are two common types of service types: ClusterIP and NodePort.
+  # ClusterIP makes this service internal to the cluster, i.e. not accessible through browsers. 
+  # NodePort makes it accessible outside the cluster.
+  type: NodePort
