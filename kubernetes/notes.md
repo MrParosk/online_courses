@@ -4,7 +4,7 @@
 
 - Kubernetes is used for automating deployment, scaling, and management of containerized applications.
 
-## Pod
+## Pods
 - A pod is one or more containers with shared storage / network and a specification for how to run the containers.
 - Think of pods as a wrapper for a container, for most cases container == pod.
 - Can have helper containers for a microservice in a pod (i.e. log processor), however best pratice is not to have two micro-services in one pod.
@@ -15,8 +15,7 @@
 
 <img src="./images/pods.png" width="500"/>
 
-
-## Service
+## Services
 - In Kubernetes, a service is an abstraction which defines a set of Pods and a policy by which to access them.
 - Services enable a loose coupling between dependent Pods.
 - Services are long-lived object in Kubernetes.
