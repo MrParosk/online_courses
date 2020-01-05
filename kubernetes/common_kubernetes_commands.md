@@ -33,6 +33,8 @@
     - Delete the named pod. Can also delete svc, rs, deploy.
 - kubectl delete po --all
     - Delete all pods (also svc, rs, deploy).
+- kubectl logs \<pod name>
+    - View the log of the pod (i.e. terminal output from the container). This is very useful for debugging pods.
 
 ## Deployment Management
 - kubectl rollout status deploy \<name of deployment>
