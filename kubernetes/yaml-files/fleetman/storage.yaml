@@ -1,0 +1,33 @@
+# Local-storage - mongo-pvc
+
+# What do we want?
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mongo-pvc
+spec:
+  # Binding, i.e. it will look for PersistentVolume which
+  # has the same acessModes, storageClassName and enough storage space.
+  storageClassName: mylocalstorage
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+
+# How do we want it implemented.
+# This is physical storage.
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-storage
+spec:
+  storageClassName: mylocalstorage
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 1Gi
+  hostPath:
+    path: /mnt/some/directory/struct/
+    type: DirectoryOrCreate

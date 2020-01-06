@@ -60,3 +60,11 @@
 - The same is true if we try to do some command, e.g. kubectl get all, then it will display the resources in the "default" namespace.
 
 <img src="./images/namespace.png" width="500"/>
+
+## Persistence
+- When a pod is destroyed, all of the data inside the container is lost (including local storage).
+- By default, all data (e.g. in databases) are stored locally on the container, and if they dies, all data is lost.
+- We can store data on a persistance storage, e.g. on the filesystem on the host, real hard drive in a cloud environment (outside the kubernetes cluster) etc. If we do, the data will still exist, even if the pod are destroyed.
+- We can mount storage, i.e. map a folder inside the container to a folder on the host-system, i.e. the data is stored outside the container.
+- We can configure Kubernetes to implement the mapping using different strategies, using the host system, outside storage (e.g. Amazon EBS-system) etc.
+- Best pratice is to define the storage outside the pod definition, i.e. in PersistentVolumeClaim / PersistentVolume yaml-files. This makes it easier to migrate between local development and between cloud providers (AWS, Azure etc).

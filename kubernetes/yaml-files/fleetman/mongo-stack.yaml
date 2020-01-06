@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb
+spec:
+  selector:
+    matchLabels:
+      app: mongodb
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mongodb
+    spec:
+      containers:
+        - name: mongodb
+          image: mongo:3.6.5-jessie
+          volumeMounts:
+            - name: mongo-persistent-storage
+              # Where mongo-db stores the data locally (i.e. in the container).
+              mountPath: /data/db
+      volumes:
+        # Where the data shall be stored on persistent-storage.
+        # Can be on the host system, external hard-drives etc.
+        - name: mongo-persistent-storage
+        # We can either hard-code all of the paths or have a 
+        # pointer to the configuration of HOW we want the mount to be implemented (this is called PersistentStorageClaims).
+        #
+        # Hard-coded
+        #  hostPath:
+        #      path: /mnt/some/directory/struct/
+        #      type: DirectoryOrCreate
+        #
+        # PersistentStorageClaims
+          persistentVolumeClaim:
+              claimName: mongo-pvc
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: fleetman-mongodb
+spec:
+  selector:
+    app: mongodb
+  ports:
+  - name: mongoport
+    port: 27017
+  type: ClusterIP

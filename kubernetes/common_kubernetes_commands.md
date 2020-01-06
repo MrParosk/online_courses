@@ -25,6 +25,8 @@
     - Execute the specified command in the pod’s container.
 - kubectl get (pod | po | service | svc | rs | replicaset | deployment | deploy)
     - Get all pods, services, replicasets or deployments.
+- Kubectl get (pv | pvc)
+    - Get all persistent-volume or persistent-volume-claim.
 - kubectl get po --show-labels
     - Get all pods and their labels.
 - kubectl get po --show-labels -l {name}={value}
