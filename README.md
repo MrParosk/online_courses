@@ -12,5 +12,5 @@ Collection of materials (i.e. code/notes etc) from online courses I have complet
 - [Software Testing](https://eu.udacity.com/course/software-testing--cs258)
 - [Designing RESTful APIs](https://eu.udacity.com/course/designing-restful-apis--ud388)
 - [Audio Signal Processing for Music Applications](https://www.coursera.org/learn/audio-signal-processing)
-- [Computational Linear Algebra](https://www.fast.ai/2017/07/17/num-lin-alg/) (TBC)
+- [Computational Linear Algebra](https://www.fast.ai/2017/07/17/num-lin-alg/)
 - [Kubernetes Hands-On - Deploy Microservices to the AWS Cloud](https://www.udemy.com/course/kubernetes-microservices/) (TBC)
