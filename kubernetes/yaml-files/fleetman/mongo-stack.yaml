@@ -15,6 +15,10 @@ spec:
       containers:
         - name: mongodb
           image: mongo:3.6.5-jessie
+          resources:
+            requests:
+              memory: 500Mi
+              cpu: 500m
           volumeMounts:
             - name: mongo-persistent-storage
               # Where mongo-db stores the data locally (i.e. in the container).
