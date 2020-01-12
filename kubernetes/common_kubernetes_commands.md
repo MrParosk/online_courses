@@ -11,6 +11,12 @@
     - Find out the required environment variables to connect to the docker daemon running in minikube.
 - minikube ip
     - Find out the ip address of minikube. Needed for browser access.
+- minikube addons list
+  - List the available  addons for minikube.
+- minikube addons enable \<addon name> 
+  - Enables the given addon. Note that we might need to restart minikube.
+- minikube dashboard
+  - Starts the kubernetes dashboard.
 
 ## Kubectl
 - kubectl get all
@@ -37,6 +43,10 @@
     - Delete all pods (also svc, rs, deploy).
 - kubectl logs \<pod name>
     - View the log of the pod (i.e. terminal output from the container). This is very useful for debugging pods.
+- kubectl describe node
+  - Displays the resource-usage of the node.
+- kubectl top (pod | node)
+  - Gives memory / CPU usage for the pod / node, i.e. how much is it physically using. Note that we need to enable metrics-server for this command to work.
 
 ## Deployment Management
 - kubectl rollout status deploy \<name of deployment>
