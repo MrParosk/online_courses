@@ -68,3 +68,22 @@
 - We can mount storage, i.e. map a folder inside the container to a folder on the host-system, i.e. the data is stored outside the container.
 - We can configure Kubernetes to implement the mapping using different strategies, using the host system, outside storage (e.g. Amazon EBS-system) etc.
 - Best pratice is to define the storage outside the pod definition, i.e. in PersistentVolumeClaim / PersistentVolume yaml-files. This makes it easier to migrate between local development and between cloud providers (AWS, Azure etc).
+
+## Requests and limits
+- In kubernetes, we can specify request and limit of CPU and memory of each container.
+- Request is specified inorder to let the scheduler know where it can put the pods (i.e. on which node), however it doesn't affect the runtime. For example, if a pod has a memory leak it can use all of the memory on a node, even if the request is set below the node's total memory.
+- Limit restrict the pod's resources, i.e. it can not use more then the specified values. Therefore it affects the runtime of the container.
+- Memory limit: if the actual memory usage of the container at runtime exceeds the limit the container will be killed; the pod will remain, the container will therefore attempt to restart.
+- CPU limit: if the CPU usage of the container at runtime exceeds the limit, the CPU will be "clamped" (i.e. throttling). However, the container will continue to run.
+- The point of limits is to protect the overall health of a cluster.
+- These values should be set such that the container can run comfortable.
+- The limit-values needs to be atleast as high as the request-values.
+- If a node doesn't have enough ram for scheduling a pod, the pod will fail / give error and we have to schedule it on another node.
+- For CPU-values we can use fractions, i.e. 0.1. It is common to use the postfix m, e.g. 100m; 100m = 100 mili-cores, i.e. 0.1 CPU.
+- For memory, its common to use M/Ki postfix, i.e. 1 Mi = 1024 Ki.
+
+## Resource profiling
+- We can use the the kubectl top command to profile the memory and CPU usage of each pod. This can give us a hint of what a good request / limit value is (metrics-server needs to be enable inorder to use this command).
+- We can also use the kubernetes-dashboard to profile the usage (dashboard needs to be enable inorder to use it).
+- In general, setting good request / limit values are context dependent. It depends on the frameworks and languages used etc. Needs to be tune based on our needs.
+- Setting request values are good since it allows the schedular to make good "decision" (and essential for horizontal auto-scaling). Limits are less essential, but good if we suspect that we might have runtime problems, e.g. memory leaks.
