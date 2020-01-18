@@ -84,10 +84,10 @@
 - For memory, its common to use M/Ki postfix, i.e. 1 Mi = 1024 Ki.
 
 ## Resource profiling
-- We can use the the kubectl top command to profile the memory and CPU usage of each pod. This can give us a hint of what a good request / limit value is (metrics-server needs to be enable inorder to use this command).
-- We can also use the kubernetes-dashboard to profile the usage (dashboard needs to be enable inorder to use it).
+- We can use the the kubectl top command to profile the memory and CPU usage of each pod. This can give us a hint of what a good request / limit value is (metrics-server needs to be enabled in order to use this command).
+- We can also use the kubernetes-dashboard to profile the usage (dashboard needs to be enabled in order to use it).
 - In general, setting good request / limit values are context dependent. It depends on the frameworks and languages used etc. Needs to be tune based on our needs.
-- Setting request values are good since it allows the schedular to make good "decision" (and essential for horizontal auto-scaling). Limits are less essential, but good if we suspect that we might have runtime problems, e.g. memory leaks.
+- Setting request values are good since it allows the scheduler to make good "decision" (and essential for horizontal auto-scaling). Limits are less essential, but good if we suspect that we might have runtime problems, e.g. memory leaks.
 
 ## Horizontal pod autoscaling
 - Kubernetes has the ability to horizontally autoscale pods, i.e. replicating pods.
@@ -96,7 +96,7 @@
 - For autoscaling, only need to define the request field (not limit).
 - Note that not every application can be replicated, it depends on how we design the software. For example, stateless application are easy to replicate.
 - Stateless: the application doesn't contain any information it needs to share with other applications.
-- In genertal, databases are hard to replicate.
-- Kubernetes is conservative when scaling down; the scale down process starts when the metric is below the target for serveral minutes.
+- In general, databases are hard to replicate.
+- Kubernetes is conservative when scaling down; the scale down process starts when the metric is below the target for several minutes.
 
 <img src="./images/autoscaling.png" width="500"/>

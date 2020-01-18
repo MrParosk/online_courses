@@ -30,7 +30,7 @@
 - kubectl exec –it \<pod name> \<command>
     - Execute the specified command in the pod’s container.
 - kubectl get (pod | service | replicaset | deployment | hpa)
-    - Get all pods, services, replicasets, deployments or horizontal pod autoscale.
+    - Get all pods, services, replicasets, deployments or horizontal pod autoscaler.
 - kubectl get (pv | pvc)
     - Get all persistent-volume or persistent-volume-claim.
 - kubectl get po --show-labels
