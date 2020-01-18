@@ -24,6 +24,7 @@
 - Services can be connected to internally (type=ClusterIP) or externally (type=NodePort).
 - Services connect pods by selectors.
 - We can use any selectors name and multiple of them. If we have multiple then it will be an AND operator, i.e. all of the selectors from the service need to match the labels on the pods.
+- Routing between pods are done by round-robin, by default.
 
 <img src="./images/service.png" width="500"/>
 
@@ -87,3 +88,15 @@
 - We can also use the kubernetes-dashboard to profile the usage (dashboard needs to be enable inorder to use it).
 - In general, setting good request / limit values are context dependent. It depends on the frameworks and languages used etc. Needs to be tune based on our needs.
 - Setting request values are good since it allows the schedular to make good "decision" (and essential for horizontal auto-scaling). Limits are less essential, but good if we suspect that we might have runtime problems, e.g. memory leaks.
+
+## Horizontal pod autoscaling
+- Kubernetes has the ability to horizontally autoscale pods, i.e. replicating pods.
+- Horizontal scaling: improve capacity of the system by creating more instances (i.e. more nodes / pods).
+- Vertical scaling: make the nodes more powerful (more RAM / CPU).
+- For autoscaling, only need to define the request field (not limit).
+- Note that not every application can be replicated, it depends on how we design the software. For example, stateless application are easy to replicate.
+- Stateless: the application doesn't contain any information it needs to share with other applications.
+- In genertal, databases are hard to replicate.
+- Kubernetes is conservative when scaling down; the scale down process starts when the metric is below the target for serveral minutes.
+
+<img src="./images/autoscaling.png" width="500"/>

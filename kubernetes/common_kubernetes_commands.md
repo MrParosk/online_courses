@@ -29,14 +29,16 @@
     - Gives full information about the specified pod.
 - kubectl exec –it \<pod name> \<command>
     - Execute the specified command in the pod’s container.
-- kubectl get (pod | po | service | svc | rs | replicaset | deployment | deploy)
-    - Get all pods, services, replicasets or deployments.
+- kubectl get (pod | service | replicaset | deployment | hpa)
+    - Get all pods, services, replicasets, deployments or horizontal pod autoscale.
 - kubectl get (pv | pvc)
     - Get all persistent-volume or persistent-volume-claim.
 - kubectl get po --show-labels
     - Get all pods and their labels.
 - kubectl get po --show-labels -l {name}={value}
     - Get all pods matching the specified name:value pair.
+- kubectl get \<type> \<name> -o yaml
+    - Output the kubernetes type in yaml-format.
 - kubectl delete po \<pod name>
     - Delete the named pod. Can also delete svc, rs, deploy.
 - kubectl delete po --all
