@@ -100,3 +100,11 @@
 - Kubernetes is conservative when scaling down; the scale down process starts when the metric is below the target for several minutes.
 
 <img src="./images/autoscaling.png" width="500"/>
+
+## Readiness and liveness probes
+- In kubernetes, it is assumed that if the container is up and running that the webservice is ready to receive requests.
+- However this might not be true, it depends on the software (e.g. it might need time to read configuration files etc).
+- If this is the case, some of the request will be routed to the "not read" pods and will therefore return HTTP-error messages. One example of this is when the number of pods change due to auto-scaling.
+- This can be solved by readiness probes; it will tell kubernetes when the webservice is ready to receive requests. Before that, it will not send any requests to those pods.
+- It is good pratice to use readiness, especially if we use auto-scaling.
+- Liveness probs will continuously run and check if the pods are "alive". If not, it will restart the pod.

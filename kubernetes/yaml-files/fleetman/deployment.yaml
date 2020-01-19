@@ -90,6 +90,10 @@ spec:
       containers:
         - name: api-gateway
           image: richardchesterwood/k8s-fleetman-api-gateway:performance
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: production-microservice
