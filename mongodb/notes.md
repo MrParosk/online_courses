@@ -52,3 +52,27 @@
 - Note that the nested document can have their own id's field.
 
 <img src="./images/embedded_documents.png" width="500"/>
+
+## Schemas
+
+- In NoSQL we can store different types of data in the same collection.
+- However, it is usually a good idea to separate the data into different collections based on their types (i.e. the extra data example below).
+- Yet, requiring the documents to have the exact same fields defeats the purpose of NoSQL.
+
+<img src="./images/schema_tradeoffs.png" width="500"/>
+
+## Data types
+- MongoDB can handle multiple data-types:
+    - Text: "Max".
+    - Boolean: true
+    - Number:
+        - Integer (int32): 32
+        - NumberLong (int64): 2313123123
+        - NumberDecimal (float64): 3.556
+    - ObjectId: ObjectId("34asd4444fghh")
+    - ISODate: ISODate("2018-09-09")
+    - Timestamp: Timestamp(11421532)
+    - Embedded Document: {"a": {...}}
+    - Array: {b: [...]}
+- Note that if we insert a number from the shell it will be of type float64. This is because the shell is based on javascript.
+- This might differ for driver in other languages, e.g. Java.
