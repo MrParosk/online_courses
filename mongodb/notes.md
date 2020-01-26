@@ -112,8 +112,8 @@
     "_id": "uid",
     "username": "user",
     "posts": [
-        {"title": "post 1", text: "topic 1"},
-        {"title": "post 2", text: "topic 2"}
+        {"title": "post 1", "text": "topic 1"},
+        {"title": "post 2", "text": "topic 2"}
     ]
 }
 ```
