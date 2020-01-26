@@ -136,7 +136,13 @@ db.createCollection('posts', {
 - There are some rule-of-thumb for when to choose which type (i.e. references or embedded), however the choice is context dependent.
 - One must always think about how the data is fetched, how often its fetched, does the data change a lot, gets remove etc.
 
-### Reference example
+### References
+- Split data across collections.
+- Great for related but shared data as well as for data which is used in relations and standalone.
+- Allows you to overcome nesting and size limits (by creating new documents).
+- Can use MongoDB's $lookup command for accessing the reference-data.
+
+#### Reference example
 ```json
 {
     "_id": "uid",
@@ -156,7 +162,12 @@ db.createCollection('posts', {
 }
 ```
 
-### Embedded example
+### Embedded documents
+- Group data together logically.
+- Great for data that belongs together and is not really overlapping with other data.
+- Avoid super-deep nesting (100+ levels) or extremely long arrays (16 mb size limit per document).
+
+#### Embedded example
 ```json
 {
     "_id": "uid",
