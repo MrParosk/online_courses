@@ -61,6 +61,56 @@
 
 <img src="./images/schema_tradeoffs.png" width="500"/>
 
+## Schema-validation
+- In MongoDB we can have schema-validation, i.e. inserted / updated documents needs to have a specific structure with specific data-types in order to get inserted.
+- We can set the validation level to "strict" (all inserts & updates are checked) or "moderate" (all inserts & updates to correct document).
+- We can set the validation action to "error" (throw error and deny insert/update) or "warn" (log warning but proceed).
+- It is easiest to insert the validation schema when creating the collection (see below for example).
+- However, we can also update an existing schema with db.runCommand({"CollMod": "posts", validator: {...}}).
+
+```javascript
+db.createCollection('posts', {
+  validator: {
+    $jsonSchema: {
+      bsonType: 'object',
+      required: ['title', 'text', 'creator', 'comments'],
+      properties: {
+        title: {
+          bsonType: 'string',
+          description: 'must be a string and is required'
+        },
+        text: {
+          bsonType: 'string',
+          description: 'must be a string and is required'
+        },
+        creator: {
+          bsonType: 'objectId',
+          description: 'must be an objectid and is required'
+        },
+        comments: {
+          bsonType: 'array',
+          description: 'must be an array and is required',
+          items: {
+            bsonType: 'object',
+            required: ['text', 'author'],
+            properties: {
+              text: {
+                bsonType: 'string',
+                description: 'must be a string and is required'
+              },
+              author: {
+                bsonType: 'objectId',
+                description: 'must be an objectid and is required'
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+});
+```
+
 ## Data types
 - MongoDB can handle multiple data-types:
     - Text: "Max".
