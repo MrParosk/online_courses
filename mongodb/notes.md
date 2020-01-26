@@ -76,3 +76,63 @@
     - Array: {b: [...]}
 - Note that if we insert a number from the shell it will be of type float64. This is because the shell is based on javascript.
 - This might differ for driver in other languages, e.g. Java.
+
+## References versus embedded documents
+- For some applications we need relationships. For example if we have created an online forum, we will have users and posts, and there will be relationships between the users and posts.
+- We have two options: references or embedded documents.
+- For references, we keep an reference (e.g. id-field) s.t. we can lookup the required document fast.
+- For embedded documents, we embed the sub-document within our "main" document.
+- There are three types of relationships commonly discussed, one-to-one, one-to-many, many-to-many.
+- There are some rule-of-thumb for when to choose which type (i.e. references or embedded), however the choice is context dependent.
+- One must always think about how the data is fetched, how often its fetched, does the data change a lot, gets remove etc.
+
+### Reference example
+```json
+{
+    "_id": "uid",
+    "username": "user",
+    "posts": ["id_1", "id_2"]
+}
+
+{
+    "_id": "id_1",
+    "title": "post 1",
+    "text": "topic 1"
+},
+{
+    "_id": "id_2",
+    "title": "post 2",
+    "text": "topic 2"
+}
+```
+
+### Embedded example
+```json
+{
+    "_id": "uid",
+    "username": "user",
+    "posts": [
+        {"title": "post 1", text: "topic 1"},
+        {"title": "post 2", text: "topic 2"}
+    ]
+}
+```
+
+## One-to-one
+- One-to-one often uses the embedded document structure, however depends on the application.
+- Example of one-to-one relationship:
+
+<img src="./images/one_one.png" width="500"/>
+
+## One-to-many
+- One-to-many often uses the embedded document structure, however depends on the application.
+- Example of one-to-many relationship:
+
+<img src="./images/one_many.png" width="500"/>
+
+
+## Many-to-many
+- Many-to-many often uses the references structure, however depends on the application.
+- Example of many-to-many relationship:
+
+<img src="./images/many_many.png" width="500"/>
