@@ -37,6 +37,8 @@
 
 <img src="./images/cursors.png" width="500"/>
 
+<img src="./images/understand_cursors.png" width="500"/>
+
 ## Projections
 - Sometimes we only want to return some fields of the documents.
 - We could fetch all documents and them only keep the desired fields, however this would require more bandwidth.
