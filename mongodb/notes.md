@@ -26,9 +26,20 @@
 <img src="./images/bson.png" width="500"/>
 
 ## CRUD operations
-- CRUD stands for Create, Read, Update and Delete and are command commands in MongoDB.
+- CRUD stands for Create, Read, Update and Delete and are common commands in MongoDB.
 
 <img src="./images/crud_commands.png" width="500"/>
+
+## Operators
+- In MongoDB we have operators that are used in the CRUD. They are query, projection and update.
+- The query operators are used to locate data. They are used in read, update and delete commands.
+- The projection operators are used to transform data. They are used in the read commands.
+- The update operators are used to modify data. They are used in the update commands.
+- Below are the documentation of different operators:
+  - [Query and projection operators](https://docs.mongodb.com/manual/reference/operator/query/)
+  - [Update operators](https://docs.mongodb.com/manual/reference/operator/update/)
+
+<img src="./images/impact_operators.png" width="500"/>
 
 ## Cursors
 - When using fetch-multiple-data-command such as collection.find() MongoDB doesn't return the data but a cursor object.
