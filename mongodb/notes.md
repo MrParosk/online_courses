@@ -31,7 +31,7 @@
 <img src="./images/crud_commands.png" width="500"/>
 
 ## Operators
-- In MongoDB we have operators that are used in the CRUD. They are query, projection and update.
+- In MongoDB we have operators that are used in CRUD. They are query, projection and update.
 - The query operators are used to locate data. They are used in read, update and delete commands.
 - The projection operators are used to transform data. They are used in the read commands.
 - The update operators are used to modify data. They are used in the update commands.
@@ -43,12 +43,11 @@
 
 ## Cursors
 - When using fetch-multiple-data-command such as collection.find() MongoDB doesn't return the data but a cursor object.
+- This used since we might get thousands or even millions of return documents, and returning them in one batch would be inefficient.
 - From the cursor object we can fetch the data by .toArray() or similar command.
 - Think of them as similar to Python's iterators.
 
 <img src="./images/cursors.png" width="500"/>
-
-<img src="./images/understand_cursors.png" width="500"/>
 
 ## Projections
 - Sometimes we only want to return some fields of the documents.
