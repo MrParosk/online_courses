@@ -225,3 +225,35 @@ db.createCollection('posts', {
 - We can create a partial index. This will only create the index for some specified values, e.g. age > 60. For the other values, i.e. age < 60, we will do a regular COLLSCAN. This allows us to save disk space and to do faster inserts.
 
 <img src="./images/index.png" width="500"/>
+
+## Choosing winning strategy
+- When executing a query, MongoDB usually performs a "test" to see which index to use (if applicable) or to do a COLLSCAN.
+- It begins to check which indices could be helpful.
+- From these "helpful" indices it perform the query on a subset of the data to see which one is the fastest, which will be used.
+- It will cache the winning strategy and reuse it on similar queries.
+- The cache is emptied after:
+  - 1000 writes.
+  - The index is rebuilt.
+  - An index is removed / added.
+  - MongoDB server is restarted.
+
+## Multi-key index
+- We can create an index based on an array / nested document. This is called multi-key index.
+- Internally, MongoDB stores each element in the array as a key, which reference the document.
+- Therefore, multi-key indices are larger than single ones.
+- For compound index we can only have one multi-key index.
+
+## Text index
+- Text indices is an example of a multi-key index.
+- To create one, we use db.collection.createIndex({field: "text"}), this converts the text into an array of words which allow us to search for individual terms.
+- It does stemming, remove stop words, punctuations etc.
+- When searching for keywords, each returned document gets a score which is based on term-frequency.
+- We can only have one text index per collection, however we can combine multiple field in one text index.
+
+<img src="./images/text_index.png" width="500"/>
+
+## Building indices
+- By default MongoDB builds an index in the foreground, i.e. the collection is locked during the creation. 
+- However during a production setting we would like to do it in the background, i.e. the collection is accessible during index creation.
+- This can be configured when we create the index.
+- Building the index in the foreground is usually faster and recommended during development.
