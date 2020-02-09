@@ -221,21 +221,12 @@ db.createCollection('posts', {
 - Therefore one should think hard about which compound indices are required, based on the expected queries.
 - Since an index is in sorted order, it allows us to do fast sorts based on that index. However, for compound indices the order matters as for search, i.e. left to right.
 - Note that sorting large documents might require an index, since MongoDB will read all documents to memory when sorting without an index and MongoDB has a limit of 32 MB of documents in memory.
-- We can create an index that requires unique keys. Note that a missing field counts as a key value.
-- We can create a partial index. This will only create the index for some specified values, e.g. age > 60. For the other values, i.e. age < 60, we will do a regular COLLSCAN. This allows us to save disk space and to do faster inserts.
 
 <img src="./images/index.png" width="500"/>
 
-## Choosing winning strategy
-- When executing a query, MongoDB usually performs a "test" to see which index to use (if applicable) or to do a COLLSCAN.
-- It begins to check which indices could be helpful.
-- From these "helpful" indices it perform the query on a subset of the data to see which one is the fastest, which will be used.
-- It will cache the winning strategy and reuse it on similar queries.
-- The cache is emptied after:
-  - 1000 writes.
-  - The index is rebuilt.
-  - An index is removed / added.
-  - MongoDB server is restarted.
+## Index options
+- We can create an index that requires unique keys. Note that a missing field counts as a key value.
+- We can create a partial index. This will only create the index for some specified values, e.g. age > 60. For the other values, i.e. age < 60, we will do a regular COLLSCAN. This allows us to save disk space and to do faster inserts.
 
 ## Multi-key index
 - We can create an index based on an array / nested document. This is called multi-key index.
@@ -257,3 +248,14 @@ db.createCollection('posts', {
 - However during a production setting we would like to do it in the background, i.e. the collection is accessible during index creation.
 - This can be configured when we create the index.
 - Building the index in the foreground is usually faster and recommended during development.
+
+## Choosing winning strategy
+- When executing a query, MongoDB usually performs a "test" to see which index to use (if applicable) or to do a COLLSCAN.
+- It begins to check which indices could be helpful.
+- From these "helpful" indices it perform the query on a subset of the data to see which one is the fastest, which will be used.
+- It will cache the winning strategy and reuse it on similar queries.
+- The cache is emptied after:
+  - 1000 writes.
+  - The index is rebuilt.
+  - An index is removed / added.
+  - MongoDB server is restarted.
