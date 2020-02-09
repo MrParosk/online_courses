@@ -209,3 +209,19 @@ db.createCollection('posts', {
 - Example of many-to-many relationship:
 
 <img src="./images/many_many.png" width="500"/>
+
+## Indices
+- In MongoDB we can create indices on different fields. They allow us to search / sort values fast.
+- Internally, MongoDB uses B-trees to store an index, which allow us to search in O(log n) instead of O(n).
+- Here is a good article how indices [work](https://www.qwertee.io/blog/postgresql-b-tree-index-explained-part-1/). Note that this article is for Postgres, however the same data structure is used in MongoDB. It also covers compound index.
+- Note that we don't want to create too many indices since they require disk space and makes inserts slower since we need to add every new document to the B-tree.
+- Also, searching with indices (IXSCAN) are not always faster than a full scan (COLLSCAN). When we want to return all / large portion of the documents, a COLLSCAN can be faster than IXSCAN, since we have the extra step of going through the index.
+- We can create an index on multiple fields, called compound index. Note that the key-order matters when we create the index.
+- E.g. the index {age: 1, gender: 1} allow us to do IXSCAN on (age, gender) and age, but not (gender, age), i.e. left to right. 
+- Therefore one should think hard about which compound indices are required, based on the expected queries.
+- Since an index is in sorted order, it allows us to do fast sorts based on that index. However, for compound indices the order matters as for search, i.e. left to right.
+- Note that sorting large documents might require an index, since MongoDB will read all documents to memory when sorting without an index and MongoDB has a limit of 32 MB of documents in memory.
+- We can create an index that requires unique keys. Note that a missing field counts as a key value.
+- We can create a partial index. This will only create the index for some specified values, e.g. age > 60. For the other values, i.e. age < 60, we will do a regular COLLSCAN. This allows us to save disk space and to do faster inserts.
+
+<img src="./images/index.png" width="500"/>
