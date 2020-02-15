@@ -259,3 +259,11 @@ db.createCollection('posts', {
   - The index is rebuilt.
   - An index is removed / added.
   - MongoDB server is restarted.
+
+## Aggregation
+- Aggregation is a way to transform and aggregate data in MongoDB.
+- Aggregation returns a cursor.
+- Note that MongoDB does optimization on the aggregation pipeline under the hood.
+- The aggregation documentations can be found here [here](https://docs.mongodb.com/manual/aggregation/).
+
+<img src="./images/aggregation.png" width="500"/>
