@@ -267,3 +267,27 @@ db.createCollection('posts', {
 - The aggregation documentations can be found here [here](https://docs.mongodb.com/manual/aggregation/).
 
 <img src="./images/aggregation.png" width="500"/>
+
+## Security checklist
+- MongoDB provides a checklist for security [considerations](https://docs.mongodb.com/manual/administration/security-checklist/).
+
+<img src="./images/security_checklist.png" width="500"/>
+
+
+## Authentication and authorization
+- Authentication identifies valid users of the database.
+- Authorization identifies what these users may actually do in the database.
+- MongoDB uses a Role Based Access Control approach for authorization.
+- You create users on the databases and you then log in with your credentials (against those databases).
+- Users have no right by default, you need to add roles to allow certain operations.
+- Permissions that are granted by roles ("Privileges") are only granted for the database the user was added to unless you explicitly grant access to other databases.
+- You can use "AnyDatabase" roles for cross-database access.
+- Below is a list of built-roles, a more detail description can be found [here](https://docs.mongodb.com/manual/reference/built-in-roles/).
+
+<img src="./images/built_in_roles.png" width="500"/>
+
+## Encryption
+- You can encrypt data during transportation and at rest.
+- During transportation, you use TLS / SSL to encrypt data.
+- For production, you should use SSL certificates issues by a certificate authority (not self-signed certificates).
+- For encryption at rest, you can encrypt both the files that hold you data (made simple with "MongoDB Enterprise") and the values inside your documents (i.e. hashing).
