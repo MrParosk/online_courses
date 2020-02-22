@@ -322,3 +322,10 @@ db.createCollection('posts', {
 - Therefore it's important to choose a sharding key s.t. the data is distributed fairly equally across keys. Otherwise all writes / reads will be done on one shard which also defeat the purpose of sharding.
 
 <img src="./images/sharding.png" width="500"/>
+
+## Transactions
+- Transactions is a way to make sure a group of operations either succeed together or fails together.
+- If they fail the database will be rolled back to the state it was before the transaction.
+- This is useful for application where we need this consistency.
+- For example, if we would have a database with bank accounts and wish to transfer money from one account to another, we would require that the withdraw from one account and insertion to another would either both fail or succeed, otherwise money would disappear / be created.
+- Note that this feature was added in MongoDB 4.0.
