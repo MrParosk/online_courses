@@ -273,7 +273,6 @@ db.createCollection('posts', {
 
 <img src="./images/security_checklist.png" width="500"/>
 
-
 ## Authentication and authorization
 - Authentication identifies valid users of the database.
 - Authorization identifies what these users may actually do in the database.
@@ -291,3 +290,12 @@ db.createCollection('posts', {
 - During transportation, you use TLS / SSL to encrypt data.
 - For production, you should use SSL certificates issues by a certificate authority (not self-signed certificates).
 - For encryption at rest, you can encrypt both the files that hold you data (made simple with "MongoDB Enterprise") and the values inside your documents (i.e. hashing).
+
+## Replica sets
+- When using replica sets we replica the database (i.e. primary node) across multiple other nodes (secondary nodes).
+- It is a way to add backup and fault tolerancy and to improve read performance.
+- When writing data we write to the primary node which is then responsible to synchronize this data to the secondary nodes.
+- For read, we can configure it s.t. read requests are routed to the secondary nodes.
+- If the primary node goes down, the secondary nodes holds an election to elevate one of the secondary nodes to the primary one.
+
+<img src="./images/replica_sets.png" width="500"/>
