@@ -299,3 +299,12 @@ db.createCollection('posts', {
 - If the primary node goes down, the secondary nodes holds an election to elevate one of the secondary nodes to the primary one.
 
 <img src="./images/replica_sets.png" width="500"/>
+
+## Sharding
+- Sharding is a way to increase the performance (e.g. read / write) of MongoDB through horizontal scaling.
+- The data is distributed (but not replicated) across the shards.
+- When using sharding, we create a sharding key which tells the router (i.e. mongos) on which shard the data is located.
+- If we don't give a sharding key, the query is done on all shards which defeat the purpose of sharding. However, if we specify the sharding key then we can search on the right shard right away.
+- Therefore it's important to choose a sharding key s.t. the data is distributed fairly equally across keys. Otherwise all writes / reads will be done on one shard which also defeat the purpose of sharding.
+
+<img src="./images/sharding.png" width="500"/>
