@@ -291,6 +291,20 @@ db.createCollection('posts', {
 - For production, you should use SSL certificates issues by a certificate authority (not self-signed certificates).
 - For encryption at rest, you can encrypt both the files that hold you data (made simple with "MongoDB Enterprise") and the values inside your documents (i.e. hashing).
 
+## What influences performance?
+- Below are some factors that influences performance:
+  - Efficient queries / operations.
+  - Indices.
+  - Fitting data schema.
+  - Hardware and network.
+  - Sharding.
+  - Replica sets.
+
+## Capped collections
+- Capped collections are collections that has a capped size (i.e. number of documents).
+- When the maximum size is reached, the oldest documents are deleted.
+- Good for temporary data such as logs, caching etc.
+
 ## Replica sets
 - When using replica sets we replica the database (i.e. primary node) across multiple other nodes (secondary nodes).
 - It is a way to add backup and fault tolerancy and to improve read performance.
