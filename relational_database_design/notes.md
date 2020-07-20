@@ -26,5 +26,29 @@ A lot of time, databases and DBMS is refer as the same thing, which is not techn
 
 Example of RDBMS is MySQL, SQL Server etc.
 
+## SQL
+
+Is a programming language used to interact with databases. SQL has two sub-categories:
+
+- Data-definition-language (DDL), it allow us to define the structure of the tables, i.e. CREATE TABLE.
+- Data-manipulation-language (DML). it allow us to insert, delete data etc.
+
+## Database design overview
+
+Database design is the process of using the skills we have in order to design a database that doesn't have data integrity issues, no repeating data, old data, anomalies etc. Also we want to split the data up into different tables and describing the relations between them.
+
+For example, we might have a users table and a purchase table, and the relationship between them is the user id.
+
+The process of database design is broken up into three sections:
+
+- Conceptual: thinking about the bigger picture, how to model the relationship between data, brainstorming.
+- Logical: more specific, think about the different tables we need and how to relate them, which data-types are needed
+- Physical: even more specific, which RDBMS, tables types, which type of server, security etc.
+
+## Data integrity
+
+Data integrity, all data is correct, up to date.
+
 ## Database view
+
 A database view is a searchable object in a database that is defined by a query. Though a view doesn't store data, some refer to a views as "virtual tables", you can query a view like you can a table. A view can combine data from two or more table, using joins, and also just contain a subset of information.
