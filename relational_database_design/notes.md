@@ -47,7 +47,13 @@ The process of database design is broken up into three sections:
 
 ## Data integrity
 
-Data integrity, all data is correct, up to date.
+Data integrity is about having correct data in the database, e.g. no duplicates, broken relationship between tables etc.
+
+Three common data integrity topics are:
+
+- Entity integrity: we want to have unique entities, e.g. not duplicates of the same user.
+- Referential integrity: The relationship between tables are correct, e.g. if we have two tables, an user table and a sales table, we can't have a sale row with a non existing user. We can enforce relationships with foreign keys.
+- Domain integrity: Acceptable values for a column, e.g. can't have age < 0. This is enforced with database rules, i.e. types (in this case uint). Some databases we can specify general rules, i.e. age => 0.
 
 ## Database view
 
