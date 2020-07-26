@@ -55,6 +55,28 @@ Three common data integrity topics are:
 - Referential integrity: The relationship between tables are correct, e.g. if we have two tables, an user table and a sales table, we can't have a sale row with a non existing user. We can enforce relationships with foreign keys.
 - Domain integrity: Acceptable values for a column, e.g. can't have age < 0. This is enforced with database rules, i.e. types (in this case uint). Some databases we can specify general rules, i.e. age => 0.
 
+## Atomic values
+
+Atomic values means that we store only one thing in each column. For example, the column "name" with the value "Caleb Daniel Curry" would be split up into first, middle and last name. However we don't want to go to far, i.e. we would not want to split it up into individual characters.
+
+Also we want the values in each column to be singular, e.g. we would store favorite movie instead of favorite movies, and connect users with their favorite movies through relationships.
+
+## Relationships
+
+In a database, multiple tables are connected. Rather than storing everything in a table, we split them into multiple tables. We still need to connect the tables, this is done with relationships.
+
+## One-to-one relationships
+
+One entity has a connection to one other entity. One example is a marriage; one person is married to one person.
+
+## One-to-many relationships
+
+One entity has multiple connections to other entities. One example is comments on a website, one user can have multiple comments, but one comment belongs to one user.
+
+## Many-to-many relationships
+
+Many entities has multiple connections to multiple entities. One example is purchased items on a website, multiple products has multiple buyers, but each buyer can buy multiple products. Modelling a many-to-many relationship in a relational database is harder than the two above.
+
 ## Database view
 
 A database view is a searchable object in a database that is defined by a query. Though a view doesn't store data, some refer to a views as "virtual tables", you can query a view like you can a table. A view can combine data from two or more table, using joins, and also just contain a subset of information.
