@@ -33,9 +33,13 @@ Is a programming language used to interact with databases. SQL has two sub-categ
 - Data-definition-language (DDL), it allow us to define the structure of the tables, i.e. CREATE TABLE.
 - Data-manipulation-language (DML). it allow us to insert, delete data etc.
 
+## Database view
+
+A database view is a searchable object in a database that is defined by a query. Though a view doesn't store data, some refer to a views as "virtual tables", you can query a view like you can a table. A view can combine data from two or more table, using joins, and also just contain a subset of information.
+
 ## Database design overview
 
-Database design is the process of using the skills we have in order to design a database that doesn't have data integrity issues, no repeating data, old data, anomalies etc. Also we want to split the data up into different tables and describing the relations between them.
+Database design is the process of using the skills we have in order to design a database that doesn't have data integrity issues, no repeating data, old data, anomalies etc. Also we want to split the data up into different tables and describing the relations between them; a table should be about one entity.
 
 For example, we might have a users table and a purchase table, and the relationship between them is the user id.
 
@@ -69,14 +73,30 @@ In a database, multiple tables are connected. Rather than storing everything in 
 
 One entity has a connection to one other entity. One example is a marriage; one person is married to one person.
 
+### Designing one-to-one relationships
+
+We can usually store one-to-one relationship as attributes, i.e. store it as a column. For example, if we have credit cards (which can only be owned by one person and each person can only have one card) with columns type, amount on the card etc and cardholder with columns first-name, last-name etc we would have columns with card-id and user-id in both tables and connect the entities with foreign keys, i.e. the foreign key in the credit card table would be user-id and in the cardholder the card-id.
+
+However, one can store a one-to-one relationships in one table; depending on the problem.
+
 ## One-to-many relationships
 
 One entity has multiple connections to other entities. One example is comments on a website, one user can have multiple comments, but one comment belongs to one user.
 
+### Designing one-to-many relationships
+
+Designing one-to-many is similiar to one-to-one, but instead we would only store the user-id in the card table as a foreign key.
+
+### Parent tables and child tables
+
+Primary keys are unique in the table, foreign keys references keys in another table. The table which stores the foreign key is called child table and the table which own the foreign key is called the parent table. The child-table points to the parent table, i.e. Parent <- Child.
+
 ## Many-to-many relationships
 
-Many entities has multiple connections to multiple entities. One example is purchased items on a website, multiple products has multiple buyers, but each buyer can buy multiple products. Modelling a many-to-many relationship in a relational database is harder than the two above.
+Many entities has multiple connections to multiple entities. One example is purchased items on a website, multiple products has multiple buyers, but each buyer can buy multiple products.
 
-## Database view
+### Designing many-to-many relationships
 
-A database view is a searchable object in a database that is defined by a query. Though a view doesn't store data, some refer to a views as "virtual tables", you can query a view like you can a table. A view can combine data from two or more table, using joins, and also just contain a subset of information.
+The trick to designing many-to-many relationship is to split the data into two tables, each having a one-to-many relationship to a third table, an intermediary / junction table.
+
+In the example above, we would have one buyers table with a primary key (buyer id), one product table with a primary key (product id) and an intermediary table with the forgein keys buyer id and product id.
