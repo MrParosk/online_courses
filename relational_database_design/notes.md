@@ -100,3 +100,55 @@ Many entities has multiple connections to multiple entities. One example is purc
 The trick to designing many-to-many relationship is to split the data into two tables, each having a one-to-many relationship to a third table, an intermediary / junction table.
 
 In the example above, we would have one buyers table with a primary key (buyer id), one product table with a primary key (product id) and an intermediary table with the forgein keys buyer id and product id.
+
+## Introduction to keys
+
+Keys in databases are used to help with data integrity. (Primary) Keys has the following properties:
+
+- Keys needs to be unique.
+- Keys can never change.
+- Keys can not be null.
+
+A key is a type of index.
+
+## Lookup-tables
+
+When we want to store categories, e.g. membership type (gold, silver, etc) we can store those types in a table and access them with their ids. Then in the users table, we have a foreign key (the id). Now if we want the change the a name (e.g. gold -> diamond) we simply need to change it at one place;. Lookup tables also helps with data integrity.
+
+## Superkey and candidate key
+
+A superkey is any number of columns that forces a row to be unique. If there isn't, consider adding a row with unique values (e.g. ids). This is usually not defined / discussed in a database.
+
+A candidate key is the least number of columns that forces a row to be unique. Note that we can have multiple candidate keys.
+
+The "workflow" for finding the primary key usually follows:
+
+- Can every row be unique (i.e. superkey)?
+- How many columns are needed (candidate key)?
+- How many candidate key do I have?
+
+## Primary key and alternative key
+
+From all our candidate keys, choose the "best" one as your primary key, i.e. enforces the constraints for keys and "make sense". The primary key is used to connect tables.
+
+The candidate keys we did not choose are called alternative keys.
+
+## Natural keys and surrogate keys
+
+Natural and surrogate keys are types of primary keys. A natural key is something that you naturally store in the table, e.g. email or username. Surrogate keys is something we come up with, i.e. id number.
+
+In a database, we usually want to use only natural keys or only surrogate keys (i.e. for being consistent and avoid confusion).
+
+Some pros and cons with natural and surrogate keys:
+
+Natural keys:
+
+- Don't need to define any new data.
+- Have real-world meaning.
+- Don't always find a natural key.
+
+Surrogate keys:
+
+- Can be confusing, since there is typically not and real-world meaning.
+- Surrogate keys are usually numbers, which is easy to work with.
+- Need to add a column, i.e. extra data to store.
