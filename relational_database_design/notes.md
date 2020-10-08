@@ -179,8 +179,8 @@ With set null, the foreign key cannot have the NOT NULL constraint.
 
 ## Simple key, composite key and compound key
 
-Simple key - A key composed of one column.
-Composite key - A key composed of two or more columns.
-Compound key - A key composed of two or more columns and each column is a key themselves. One example where this is used is for intermediate tables used in many-to-many relationship.
+- Simple key - A key composed of one column.
+- Composite key - A key composed of two or more columns.
+- Compound key - A key composed of two or more columns and each column is a key themselves. One example where this is used is for intermediate tables used in many-to-many relationship.
 
 Note that some RDBMS uses composite key and compound key interchangeably.
