@@ -2,7 +2,7 @@
 
 ## What is a database?
 
-A database is an organized collection of data. For example in a ecommerce website we will need to store the users and their purchases, this can be done in a database.
+A database is an organized collection of data. For example in a e-commerce website we will need to store the users and their purchases, this can be done in a database.
 
 ## Relations and relational databases
 
@@ -46,7 +46,7 @@ For example, we might have a users table and a purchase table, and the relations
 The process of database design is broken up into three sections:
 
 - Conceptual: thinking about the bigger picture, how to model the relationship between data, brainstorming.
-- Logical: more specific, think about the different tables we need and how to relate them, which data-types are needed
+- Logical: more specific, think about the different tables we need and how to relate them, which data-types are needed.
 - Physical: even more specific, which RDBMS, tables types, which type of server, security etc.
 
 ## Data integrity
@@ -85,7 +85,7 @@ One entity has multiple connections to other entities. One example is comments o
 
 ### Designing one-to-many relationships
 
-Designing one-to-many is similiar to one-to-one, but instead we would only store the user-id in the card table as a foreign key.
+Designing one-to-many is similar to one-to-one, but instead we would only store the user-id in the card table as a foreign key.
 
 ### Parent tables and child tables
 
@@ -99,7 +99,7 @@ Many entities has multiple connections to multiple entities. One example is purc
 
 The trick to designing many-to-many relationship is to split the data into two tables, each having a one-to-many relationship to a third table, an intermediary / junction table.
 
-In the example above, we would have one buyers table with a primary key (buyer id), one product table with a primary key (product id) and an intermediary table with the forgein keys buyer id and product id.
+In the example above, we would have one buyers table with a primary key (buyer id), one product table with a primary key (product id) and an intermediary table with the foreign keys buyer id and product id.
 
 ## Introduction to keys
 
@@ -152,3 +152,27 @@ Surrogate keys:
 - Can be confusing, since there is typically not and real-world meaning.
 - Surrogate keys are usually numbers, which is easy to work with.
 - Need to add a column, i.e. extra data to store.
+
+## Foreign keys
+
+Foreign key is a reference to a primary key in another table. It helps connecting tables. We can have multiple foreign keys in a table.
+
+When defining the foreign key, we can put the constraint NOT NULL. It enforces that we need to provide the value. Setting it requires us to specify the relationship.
+
+### Foreign key constraints
+
+Foreign key constraints specifies what will happen to the children when the parent gets updated.
+
+When creating the table, we can specify what will happen when the following things occurs:
+
+- On delete.
+- On update.
+
+For each of them, we can specify what will happen:
+
+- Restrict (will throw error).
+- Cascade (will do whatever we did to the parent to the child).
+- Set null (set the children foreign key to null).
+
+Note that these commands are for MySQL, they might differ between RDBMS.
+With set null, the foreign key cannot have the NOT NULL constraint.
