@@ -184,3 +184,25 @@ With set null, the foreign key cannot have the NOT NULL constraint.
 - Compound key - A key composed of two or more columns and each column is a key themselves. One example where this is used is for intermediate tables used in many-to-many relationship.
 
 Note that some RDBMS uses composite key and compound key interchangeably.
+
+## Database normalization
+
+Database normalization is the process of structuring a relational database in accordance with a series of so-called normal forms in order to reduce data redundancy and improve data integrity. The (common) normal forms are:
+
+- First normal form (1NF).
+- Second normal form (2NF).
+- Third normal form (3NF).
+
+3NF is dependent on 2NF, and 2NF on 1NF.
+
+### 1NF
+
+Deals with data being atomic. For example, if we have a column address, we would break it up into street address, state, country etc.
+
+### 2NF
+
+Deals with partial dependency, i.e. removing it. For example, if we would have data with authors and books (i.e. many-to-many relationship), the intermediate table don't store things that partially depend on it, i.e. the isbn number. In this case we would move the isbn to the books table. If the primary key is of only one column, we are already in 2NF.
+
+### 3NF
+
+Deals with transitive dependency, i.e. removing it. Transitive dependency is when a column depends on a column which depends on a column. To solve this, break out the transitive dependency s.t. the columns within a table is only dependent on the primary key.
