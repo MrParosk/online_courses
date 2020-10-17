@@ -206,3 +206,12 @@ Deals with partial dependency, i.e. removing it. For example, if we would have d
 ### 3NF
 
 Deals with transitive dependency, i.e. removing it. Transitive dependency is when a column depends on a column which depends on a column. To solve this, break out the transitive dependency s.t. the columns within a table is only dependent on the primary key.
+
+## Indices
+
+Indices helps us search for data faster. The naive approach is to do a linear search (called table search) which has a time complexity of O(n), where n is the number of rows. When using an index, we can get the complexity O(log(n)) (most relational databases uses a B-tree). However it comes at a price, we need to store this index, which requires space. Also inserts rows becomes more expensive since we need to update this index. When discussing indices in relational databases, we usually talk about two types:
+
+- Clustered index: stores the data in the index. We can only have one clustered index per table.
+- Non-clustered index: only the indexed column is stored in the index and we store a pointer to their remaining data.
+
+Indices also increases the speed of joins.
