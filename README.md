@@ -15,4 +15,4 @@ Collection of materials (i.e. code/notes etc) from online courses I have complet
 - [Computational Linear Algebra](https://www.fast.ai/2017/07/17/num-lin-alg/)
 - [MongoDB - The Complete Developer's Guide](https://www.udemy.com/course/mongodb-the-complete-developers-guide/)
 - [Kubernetes Hands-On - Deploy Microservices to the AWS Cloud](https://www.udemy.com/course/kubernetes-microservices/)
-- [Database Design](https://www.youtube.com/watch?v=ztHopE5Wnpc&t=321s) (TBC)
+- [Database Design](https://www.youtube.com/watch?v=ztHopE5Wnpc&t=321s)
